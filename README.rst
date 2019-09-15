@@ -88,9 +88,9 @@ To acquire a single certificate for both ``example.com`` and
 .. code-block:: bash
 
    certbot certonly \\
-     --authenticator certbot-dns-netcup:dns-netcup \\
-     --certbot-dns-netcup:dns-netcup-credentials ~/.secrets/certbot/netcup.ini \\
-     --certbot-dns-netcup:dns-netcup-propagation-seconds 900 \\
+     --authenticator certbot-dns-ispconfig:dns-ispconfig \
+     --certbot-dns-ispconfig:dns-ispconfig-credentials /etc/letsencrypt/.secrets/domain.tld.ini \
+     --certbot-dns-ispconfig:dns-ispconfig-propagation-seconds 900 \
      --server https://acme-v02.api.letsencrypt.org/directory \
      -d 'example.com' \\
      -d '*.example.com'
@@ -121,7 +121,7 @@ Once that's finished, the application can be run as follows::
        --authenticator certbot-dns-ispconfig:dns-ispconfig \
        --certbot-dns-ispconfig:dns-ispconfig-propagation-seconds 900 \
        --certbot-dns-ispconfig:dns-ispconfig-credentials \
-           /var/lib/letsencrypt/ispconfig_credentials.ini \
+           /etc/letsencrypt/.secrets/domain.tld.ini \
        --no-self-upgrade \
        --keep-until-expiring --non-interactive --expand \
        --server https://acme-v02.api.letsencrypt.org/directory \
